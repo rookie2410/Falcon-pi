@@ -1,4 +1,4 @@
-# AVIATO-CLI
-Automated Vulnerability Integrated Assessment Tool
+# FALCON-PI
+Automated Vulnerability Assessment using Falcon-Pi Remotely
 
 Currently in TEST
