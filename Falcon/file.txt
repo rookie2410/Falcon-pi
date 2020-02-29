@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bas
 #title:         civilized.sh
 #description:   Configuration Script
 #author:        R12W4N
