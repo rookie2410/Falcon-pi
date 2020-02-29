@@ -22,7 +22,7 @@ class CreateCrudUser(View):
 
         
 def input(request):
-    return render(request,'crud_ajax/crud.html')
+    return render(request,'crud_ajax/crud1.html')
 
 
 def savedata(request):
