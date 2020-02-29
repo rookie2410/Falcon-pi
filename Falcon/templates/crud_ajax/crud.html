@@ -1,39 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div class="container">
-    
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Falcon Device{% endblock %}
+
+{% block content %}
+<script>
+var IPText;
+function CheckIP(IPText){
+  ValidIP = false; 
+  ipParts = IPText.split(".");
+  if(ipParts.length==4){
+    for(i=0;i<4;i++){
+       
+      TheNum = parseInt(ipParts[i]);
+      if(TheNum >= 0 && TheNum <= 255){}
+      else{break;}
+       
+    }
+    if(i==4)ValidIP=true; 
+  }
+  alert(ValidIP);
+}
+</script>
+
+<div class="container">
+    <h1>Add Falcon Device </h1>
     <div class="row">
+    
       <div class="col-md-4 ">
-        <h3>Configure Falcon Device</h3>
+        <h3>ADD Configuration</h3>
         <form id="addUser" action="savedata" method="POST">
           {% csrf_token %}
           <div class="form-group">
-            <input class="form-control" type="text" name="funame" placeholder="FalconPool Unit Name" required>
+            <input class="form-control" type="text" name="funame" placeholder="Falcon Unit Name" required>
           </div>
           <div class="form-group">
             <input class="form-control" type="password" name="fupass" placeholder="FalconPool Unit Password" required>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" name="cncip" placeholder="Cnc Server IP  0.0.0.0" required>
+            <input class="form-control" type="text" name="username" placeholder="FUID" required>
           </div>
+          
           <div class="form-group">
             <input class="form-control" type="text" name="cncuser" placeholder="CnC User" required>
+          </div>
+         
+          <div class="form-group">
+            <input class="form-control" type="text" name="cncip" placeholder="Cnc Server IP  0.0.0.0" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" >
           </div>
           <div class="form-group">
             <input class="form-control" type="text" name="monitoringport" placeholder="Monitoring Port" required>
           </div>
-          <div class="form-group">
-            <input class="form-control" type="text" name="username" placeholder="Userame" required>
-          </div>
-          <button class="btn btn-primary form-control" type="submit">SUBMIT</button>
+          {{response_from_server}}
+         
+          <button class="btn btn-primary form-control" type="submit" >SUBMIT</button>
         </form>
       </div>
-      {{result}}
-</body>
-</html>
+      <div class="col-md-8">
+        <h3>Falcon-POOL</h3>
+        <table id="userTable" class="table table-striped">
+          <tr>
+            <th>Falcon Name</th>
+            <th>Cncuser</th>
+            <th colspan="3">FUID</th>
+
+          </tr>
+          <tr id="user-{{user.id}}">
+              <td class="userName userData" name="Falcon Name">{{fname}}</td>
+              <td class="userAddress userData" name="FUID">{{cncuser}}</td>
+              <td class="userAge userData" name="Cncuser">{{fuid}}</td>
+              
+              <form action="down" method="POST" >
+                {%csrf_token%}
+                
+              <td align="center">
+                <button class="btn btn-success form-control" type="submit" data-toggle="modal" data-target="#myModal")">Download Configuration</button>
+              </td>
+              
+            </form>
+            <form action="http://13.235.182.52/SSHy">
+              
+            <td align="center">
+              <button class="btn btn-danger form-control" type="submit" data-toggle="modal" data-target="#myModal")">shell</button>
+            </td>
+          </form>
+          
+        
+          <form action="http://13.235.182.52"> 
+          <td align="center">
+            <button class="btn btn-primary form-control" type="submit" data-toggle="modal" data-target="#myModal")">get reports</button>
+          </td>
+          </form>
+              
+              
+            </form>
+              <!---<td align="center">
+                  <button class="btn btn-danger form-control" onClick="deleteUser">DELETE</button>
+              </td>-->
+          </tr>
+          
+        </table>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
+{% block javascript %}
+{% endblock javascript %}
+  
+   

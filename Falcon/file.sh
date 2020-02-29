@@ -26,12 +26,12 @@ trap "trap_ctrlc" 2
 
 function setup()
 {
-	FalconName = "mumbai"
-	Password = "qbjads"
-	FUID = "jnds"
-	cncuser = "kldkn"
-	cncip = "alns"
-	mp = "sdnc"	
+	FalconName = "r"
+	Password = "r"
+	FUID = "r"
+	cncuser = "r"
+	cncip = "r"
+	mp = "r"	
 }
 
 function adduser(){
