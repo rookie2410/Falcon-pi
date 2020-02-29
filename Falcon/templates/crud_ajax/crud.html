@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-4 ">
+        <h3>Configure Falcon Device</h3>
+        <form id="addUser" action="savedata" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <input class="form-control" type="text" name="funame" placeholder="FalconPool Unit Name" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="fupass" placeholder="FalconPool Unit Password" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="cncip" placeholder="Cnc Server IP  0.0.0.0" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="cncuser" placeholder="CnC User" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="monitoringport" placeholder="Monitoring Port" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Userame" required>
+          </div>
+          <button class="btn btn-primary form-control" type="submit">SUBMIT</button>
+        </form>
+      </div>
+      {{result}}
+</body>
+</html>
